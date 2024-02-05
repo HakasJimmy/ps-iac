@@ -5,28 +5,32 @@ gcp_project = {
 
 
 database = {
-  instance_name     = "jimmy-db"
-  name              = "jimmy-db"
+  instance_name     = "pharma-sync-dev"
+  name              = "pharma-sync-dev"
   region            = "southamerica-east1"
-  version           = "POSTGRESQL_15"
+  version           = "POSTGRES_15"
   machine_type      = "db-f1-micro"
-  disk_size         = 80
+  disk_size         = 20
   disk_type         = "pd-standard"
   delete_protection = false
   users             = [
     {
-      name     = "jimmy"
-      password = "jimmy"
+      name     = "ps-user-master"
+      password = "ps-user-master@123"
     }
   ]
+  authorized_networks = {
+    "public" = "0.0.0.0/0"
+  }
+
 }
 
 vpc = {
-  name    = "jimmy-vpc"
+  name    = "pharma-sync-dev-vpc"
   subnets = [
     {
-      name   = "jimmy-subnet"
-      cidr   = "10.0.0.0/16"
+      name = "pharma-sync-dev-subnet"
+      cidr = "10.0.0.0/16"
     }
   ]
 }

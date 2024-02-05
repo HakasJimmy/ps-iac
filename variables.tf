@@ -19,6 +19,7 @@ variable "database" {
       name     = string
       password = string
     }))
+    authorized_networks = map(string)
   })
 }
 
@@ -26,8 +27,8 @@ variable "vpc" {
   type = object({
     name    = string
     subnets = list(object({
-      name   = string
-      cidr   = string
+      name = string
+      cidr = string
     }))
   })
 }

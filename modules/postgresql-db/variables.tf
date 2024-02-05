@@ -44,3 +44,13 @@ variable "vpc_name" {
 variable "project_id" {
   type = string
 }
+
+variable "vpc_self_link" {
+  description = "O link de auto serviço da VPC para uso com a instância de banco de dados."
+  type        = string
+}
+
+variable "authorized_networks" {
+  type = map(string)
+  description = "Mapa de redes autorizadas para acesso ao banco de dados."
+}
