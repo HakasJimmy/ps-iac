@@ -51,6 +51,14 @@ variable "vpc_self_link" {
 }
 
 variable "authorized_networks" {
-  type = map(string)
+  type        = map(string)
   description = "Mapa de redes autorizadas para acesso ao banco de dados."
+}
+
+variable "replica" {
+  type = object({
+    region            = string
+    delete_protection = bool
+    heartbeat_period  = string
+  })
 }

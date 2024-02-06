@@ -3,7 +3,6 @@ gcp_project = {
   "region" : "southamerica-east1",
 }
 
-
 database = {
   instance_name     = "pharma-sync-dev"
   name              = "pharma-sync-dev"
@@ -22,11 +21,17 @@ database = {
   authorized_networks = {
     "public" = "0.0.0.0/0"
   }
+  replica = {
+    region            = "southamerica-east1"
+    heartbeat_period  = "1000" # milliseconds
+    delete_protection = false
+  }
 
 }
 
 vpc = {
   name    = "pharma-sync-dev-vpc"
+  cidr    = "10.0.0.0/16"
   subnets = [
     {
       name = "pharma-sync-dev-subnet"

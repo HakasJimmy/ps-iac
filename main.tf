@@ -39,6 +39,11 @@ module "postgresql-db" {
   users               = var.database.users
   authorized_networks = var.database.authorized_networks
   vpc_self_link       = module.vpc.vpc_self_link
+  replica             = {
+    region            = var.database.replica.region
+    heartbeat_period   = var.database.replica.heartbeat_period
+    delete_protection = var.database.replica.delete_protection
+  }
 }
 
 module "vpc" {
@@ -46,4 +51,6 @@ module "vpc" {
 
   vpc_name = var.vpc.name
   subnets  = var.vpc.subnets
+  vpc_cidr = var.vpc.cidr
+
 }

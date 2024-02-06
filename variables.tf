@@ -20,12 +20,18 @@ variable "database" {
       password = string
     }))
     authorized_networks = map(string)
+    replica             = object({
+      region            = string
+      delete_protection = bool
+      heartbeat_period  = string
+    })
   })
 }
 
 variable "vpc" {
   type = object({
     name    = string
+    cidr    = string
     subnets = list(object({
       name = string
       cidr = string

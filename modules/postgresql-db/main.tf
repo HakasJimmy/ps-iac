@@ -44,12 +44,13 @@ resource "google_sql_database" "pharma-sync-dev" {
 resource "google_sql_database_instance" "pharma-sync-dev-replica" {
   name                 = "${var.instance_name}-replica"
   database_version     = var.db_version
-  region               = var.region
+  region               = var.replica.region
+  deletion_protection  = var.replica.delete_protection
   master_instance_name = google_sql_database_instance.pharma-sync-dev.name
 
   replica_configuration {
     // define o intervalo de tempo entre as verificações de heartbeats enviadas pela réplica para a instância principal
-    master_heartbeat_period = "1000"
+    master_heartbeat_period = var.replica.heartbeat_period
   }
 
   settings {
