@@ -8,6 +8,7 @@ resource "google_compute_subnetwork" "subnet" {
 
   name          = each.value.name
   ip_cidr_range = each.value.cidr
+  region        = each.value.region
   network       = google_compute_network.vpc.self_link
 }
 

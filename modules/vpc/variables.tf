@@ -6,9 +6,6 @@ variable "subnets" {
   type = list(object({
     name = string
     cidr = string
+    region = string
   }))
-}
-
-variable "vpc_cidr" {
-  type = string
 }

@@ -30,12 +30,18 @@ database = {
 }
 
 vpc = {
-  name    = "pharma-sync-dev-vpc"
+  name    = "rm-dev-vpc"
   cidr    = "10.0.0.0/16"
   subnets = [
     {
-      name = "pharma-sync-dev-subnet"
-      cidr = "10.0.0.0/16"
+      name   = "rm-dev-subnet-1"
+      cidr   = "10.0.0.0/16",
+      region = "southamerica-east1"
+    },
+    {
+      name   = "rm-dev-subnet-2"
+      cidr   = "10.0.1.0/16",
+      region = "us-east1"
     }
   ]
 }

@@ -33,8 +33,9 @@ variable "vpc" {
     name    = string
     cidr    = string
     subnets = list(object({
-      name = string
-      cidr = string
+      name   = string
+      cidr   = string
+      region = string
     }))
   })
 }
