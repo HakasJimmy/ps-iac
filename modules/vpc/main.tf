@@ -26,3 +26,10 @@ resource "google_service_networking_connection" "private_vpc_connection" {
   service                 = "servicenetworking.googleapis.com"
   reserved_peering_ranges = [google_compute_global_address.private_ip_range.name]
 }
+
+resource "google_vpc_access_connector" "vpc_connector" {
+  name          = "vpc-connector"
+  region        = "southamerica-east1"
+  network       = google_compute_network.vpc.id
+  ip_cidr_range = var.vpc_cidr
+}

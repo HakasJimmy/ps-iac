@@ -1,8 +1,8 @@
 terraform {
   required_providers {
     google = {
-      source  = "hashicorp/google"
-      version = "5.14.0"
+      source = "hashicorp/google"
+      version = ">=5.15.0"
     }
     random = {
       source  = "hashicorp/random"
@@ -47,6 +47,7 @@ provider "google" {
 module "vpc" {
   source = "./modules/vpc"
 
+  vpc_cidr = var.vpc.cidr
   vpc_name = var.vpc.name
   subnets  = var.vpc.subnets
 
